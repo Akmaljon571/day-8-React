@@ -1,14 +1,16 @@
-import { useState, useRef } from 'react';
-import { Header, Main, Footer } from './contect'
+import useAuth from './hooks/useAuth'
+import Private from './prive.app'
+import Public from './public.app'
 import './App.scss';
+
+
 function App() {
-    return (
-      <>
-        <Header />
-        <Main />
-        <Footer />
-      </>
-    )
+  let {Auth} = useAuth()
+   if (Auth.token) {
+      return <Private />
+   } else {
+      return <Public />
+   }
 }
 
 export default App;
